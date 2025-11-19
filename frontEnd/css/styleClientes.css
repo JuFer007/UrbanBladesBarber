@@ -1,0 +1,175 @@
+:root {
+    --main-color: #666666;
+    --color-dark: #3c3c3c;
+    --text-grey: #000000;
+}
+
+/* ===== CONTENEDOR PRINCIPAL ===== */
+#divClientes {
+    margin-top: 60px; 
+    background: #f1f4f9;
+    padding: 1.3rem;
+    margin-left: 150px;
+    height: 800px !important;
+}
+
+#menu-toggle:checked ~ #divClientes {
+    margin-left: 60px;
+}
+
+.contenedor-clientes {
+    margin-left: 10px;
+    width: 100%;
+    max-width: 100%;
+}
+
+/* ===== SECCIÓN DE ACCIONES: BUSCADOR Y BOTONES ===== */
+.acciones-cliente {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 20px;
+    background: #fff;
+    padding: 1rem 1.5rem;
+    border-radius: 3px;
+    box-shadow: 0px 5px 5px -5px rgb(0 0 0 / 10%);
+}
+
+/* Buscador */
+.buscador {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    max-width: 400px;
+}
+
+.buscador label {
+    background: var(--main-color);
+    color: #fff;
+    padding: 0.5rem 0.75rem;
+    border-radius: 3px 0 0 3px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.buscador input {
+    flex: 1;
+    border: 1px solid #b0b0b0;
+    border-left: none;
+    border-radius: 0 3px 3px 0;
+    padding: 0.5rem;
+    color: #666;
+    font-size: 0.9rem;
+    height: 35px;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.buscador input:focus {
+    border-color: var(--main-color);
+    box-shadow: 0 0 0 0.2rem rgba(102, 102, 102, 0.25);
+}
+
+.buscador input::placeholder {
+    color: #999;
+}
+
+#btnAbrirModalCliente {
+    background: #a0c1b2;
+    color: black;
+}
+
+#btnAbrirModalCliente:hover {
+    background: #86a296;
+}
+
+#btnVerTarjetas {
+    background: #ff8700;
+    color: black;
+}
+
+#btnVerTarjetas:hover {
+    background: #ff9924;
+}
+
+/* ===== TABLA DE CLIENTES ===== */
+.tabla-clientes {
+    width: 100%;
+    margin-bottom: 30px;
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: 0px 5px 5px -5px rgb(0 0 0 / 10%);
+    overflow-x: auto;
+}
+
+.tabla-clientes table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: auto;
+    font-family: 'Merriweather Sans', sans-serif;
+}
+
+/* Encabezados de la tabla */
+.tabla-clientes thead {
+    background: #e9edf2;
+}
+
+.tabla-clientes thead th {
+    padding: 0.8rem 0.75rem; 
+    text-align: left;
+    color: #444;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-bottom: 1px solid #dee2e8;
+    white-space: nowrap;
+}
+
+/* Celdas del cuerpo de la tabla */
+.tabla-clientes tbody td {
+    padding: 0.8rem 0.75rem;
+    color: #444;
+    border-bottom: 1px solid #dee2e8;
+    vertical-align: middle;
+    font-size: 0.9rem;
+}
+
+.tabla-clientes tbody td:first-child {
+    color: var(--main-color);
+    font-weight: 600;
+}
+
+/* Hover effect para las filas */
+.tabla-clientes tbody tr:hover {
+    background-color: #f8f9fa;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+/* Filas seleccionadas */
+.tabla-clientes tbody tr.selected {
+    background-color: #e5f8ed;
+}
+
+.tabla-clientes tbody tr.selected td {
+    color: var(--main-color);
+}
+
+.contenedor-tabla-lista {
+    display: flex;
+    gap: 20px;
+    align-items: stretch;
+}
+
+/* Tablas con scroll si son muy largas */
+.tabla-clientes, .reservas-cliente {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+/* Resaltado de fila seleccionada */
+tr.seleccionado {
+    background-color: #d8e2d7;
+}

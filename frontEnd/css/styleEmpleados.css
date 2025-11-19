@@ -1,0 +1,438 @@
+/* CSS para sección de empleados - Nueva estructura */
+/* Usando los colores y estilos del diseño principal */
+
+:root {
+    --main-color: #666666;
+    --color-dark: #3c3c3c;
+    --text-grey: #000000;
+}
+
+/* ===== CONTENEDOR PRINCIPAL ===== */
+#divEmpleados {
+    margin-top: 60px; 
+    background: #f1f4f9;
+    padding: 1.3rem;
+    margin-left: 150px;
+}
+
+#menu-toggle:checked ~ #divEmpleados {
+    margin-left: 60px;
+}
+
+.contenedor-empleados {
+    margin-left: 10px;
+    width: 100%;
+    max-width: 100%;
+}
+
+/* ===== SECCIÓN DE ACCIONES: BUSCADOR Y BOTONES ===== */
+.acciones-empleados {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 20px;
+    background: #fff;
+    padding: 1rem 1.5rem;
+    border-radius: 3px;
+    box-shadow: 0px 5px 5px -5px rgb(0 0 0 / 10%);
+}
+
+/* Buscador */
+.buscador {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    max-width: 400px;
+}
+
+.buscador label {
+    background: var(--main-color);
+    color: #fff;
+    padding: 0.5rem 0.75rem;
+    border-radius: 3px 0 0 3px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.buscador input {
+    flex: 1;
+    border: 1px solid #b0b0b0;
+    border-left: none;
+    border-radius: 0 3px 3px 0;
+    padding: 0.5rem;
+    color: #666;
+    font-size: 0.9rem;
+    height: 35px;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.buscador input:focus {
+    border-color: var(--main-color);
+    box-shadow: 0 0 0 0.2rem rgba(102, 102, 102, 0.25);
+}
+
+.buscador input::placeholder {
+    color: #999;
+}
+
+/* Botones de acción */
+.botones {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.botones button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+#btnAgregar {
+    background: #22baa0;
+    color: black;
+}
+
+#btnAgregar:hover {
+    background: #1da085;
+}
+
+#btnDeshabilitar {
+    background: #f25656;
+    color: black;
+}
+
+#btnDeshabilitar:hover {
+    background: #e04444;
+}
+
+#btnHabilitar {
+    background-color: yellow;
+    color: black;
+}
+
+#btnDeshabitlita:hover {
+    background-color: #f6f630;
+}
+
+/* ===== TABLA DE EMPLEADOS ===== */
+.tabla-empleados {
+    width: 100%;
+    margin-bottom: 30px;
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: 0px 5px 5px -5px rgb(0 0 0 / 10%);
+    overflow-x: auto;
+}
+
+.tabla-empleados table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: auto;
+    font-family: 'Merriweather Sans', sans-serif;
+}
+
+/* Encabezados de la tabla */
+.tabla-empleados thead {
+    background: #e9edf2;
+}
+
+.tabla-empleados thead th {
+    padding: 0.8rem 0.75rem; 
+    text-align: left;
+    color: #444;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-bottom: 1px solid #dee2e8;
+    white-space: nowrap;
+}
+
+/* Celdas del cuerpo de la tabla */
+.tabla-empleados tbody td {
+    padding: 0.8rem 0.75rem;
+    color: #444;
+    border-bottom: 1px solid #dee2e8;
+    vertical-align: middle;
+    font-size: 0.9rem;
+}
+
+.tabla-empleados tbody td:first-child {
+    color: var(--main-color);
+    font-weight: 600;
+}
+
+/* Hover effect para las filas */
+.tabla-empleados tbody tr:hover {
+    background-color: #f8f9fa;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+/* Filas seleccionadas */
+.tabla-empleados tbody tr.selected {
+    background-color: #e5f8ed;
+}
+
+.tabla-empleados tbody tr.selected td {
+    color: var(--main-color);
+}
+
+/* ===== PERFIL DE EMPLEADO ===== */
+.perfil-empleado {
+    display: flex;
+    gap: 2rem;
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 3px;
+    box-shadow: 0px 5px 5px -5px rgb(0 0 0 / 10%);
+    border-left: 3px solid var(--main-color);
+}
+
+/* Sección de imagen y botón editar */
+.perfil-imagen {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0;
+    width: 150px !important;
+    height: 150px !important;
+}
+
+.perfil-imagen img {
+    width: 160px !important;
+    height: 160px !important;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #000000;
+    object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+#btnEditar {
+    background: var(--main-color);
+    border: 1px solid var(--main-color);
+    color: #fff;
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#btnEditar:hover {
+    background: var(--color-dark);
+    border-color: var(--color-dark);
+}
+
+/* Sección de datos del empleado */
+.perfil-datos {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.perfil-datos h3 {
+    color: var(--color-dark);
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+    font-family: 'Merriweather Sans', sans-serif;
+}
+
+.perfil-datos p {
+    color: var(--main-color);
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin: 0 0 1.5rem 0;
+}
+
+.perfil-datos p em {
+    font-style: italic;
+}
+
+/* Lista de datos */
+.perfil-datos ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.perfil-datos li {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 4px;
+    border-left: 3px solid #e9edf2;
+    transition: all 0.2s ease;
+}
+
+.perfil-datos li:hover {
+    background: #f0f1f3;
+    border-left-color: var(--main-color);
+}
+
+.perfil-datos li b {
+    color: #777;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.perfil-datos li b + text,
+.perfil-datos li span {
+    color: var(--color-dark);
+    font-size: 0.95rem;
+    font-weight: 600;
+    display: block;
+}
+
+/* Estados */
+.estado-activo {
+    background: #54ac41;
+    width: 80px;
+    color: rgb(0, 0, 0);
+    padding: 0.2rem 0.1rem;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.estado-inactivo {
+    background: #f25656;
+    width: 80px;
+    color: rgb(0, 0, 0);
+    padding: 0.2rem 0.1rem;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: inline-block;
+}
+
+/* ===== RESPONSIVIDAD ===== */
+@media only screen and (max-width: 768px) {
+    #divEmpleados {
+        padding: 1rem;
+    }
+    
+    /* Acciones responsive */
+    .acciones-empleados {
+        flex-direction: column;
+        gap: 15px;
+        align-items: stretch;
+    }
+    
+    .buscador {
+        max-width: 100%;
+    }
+    
+    .botones {
+        justify-content: center;
+    }
+    
+    /* Tabla con scroll horizontal */
+    .tabla-empleados {
+        overflow-x: auto;
+    }
+    
+    .tabla-empleados table {
+        min-width: 800px;
+        font-size: 0.85em;
+    }
+    
+    .tabla-empleados thead th,
+    .tabla-empleados tbody td {
+        padding: 0.8rem 0.5rem;
+    }
+    
+    /* Perfil responsive */
+    .perfil-empleado {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1.5rem;
+    }
+    
+    .perfil-imagen img {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .perfil-datos ul {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .tabla-empleados table {
+        font-size: 0.75em;
+    }
+    
+    .tabla-empleados thead th,
+    .tabla-empleados tbody td {
+        padding: 0.6rem 0.4rem;
+    }
+    
+    .buscador input {
+        font-size: 0.8rem;
+        height: 32px;
+    }
+    
+    .buscador label {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.9rem;
+    }
+    
+    .botones button {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+    }
+    
+    .perfil-datos h3 {
+        font-size: 1.3rem;
+    }
+    
+    .perfil-datos p {
+        font-size: 1rem;
+    }
+    
+    .perfil-empleado {
+        padding: 1rem;
+    }
+    
+    .perfil-imagen img {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+/* Animaciones suaves */
+.tabla-empleados tbody tr,
+.buscador input,
+.botones button,
+.perfil-datos li,
+#btnEditar {
+    transition: all 0.2s ease;
+}

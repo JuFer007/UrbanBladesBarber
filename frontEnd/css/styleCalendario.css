@@ -1,0 +1,54 @@
+#daysHeader > div {
+    text-align: center;
+    font-weight: 600;
+    color: #475569;
+    padding: 4px;
+    font-size: 12px;
+}
+
+.calendar-day {
+    aspect-ratio: 1;
+    border: none;
+    border-radius: 6px;
+    padding: 4px;
+    cursor: pointer;
+    background: white;
+    transition: all 0.2s;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.calendar-day:hover {
+    background: #f1f5f9;
+}
+
+.calendar-day.selected {
+    background: #2f405d;
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+}
+
+.calendar-day.today {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.calendar-day .appointments-count {
+    font-size: 10px;
+    margin-top: 2px;
+    color: #475569;
+}
+
+.calendar-day.selected .appointments-count {
+    color: white;
+}
+
+.appointment-card {
+    background: white;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #1e293b;
+    margin-bottom: 12px;
+}

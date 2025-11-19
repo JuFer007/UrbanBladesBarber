@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urban Blades Barber - Inicio de Sesion</title>
+    <!-- Iconos de Font Awesome (solución al error 403) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="stylesheet" href="/frontEnd/css/styleToast.css">
+    <link rel="stylesheet" href="/frontEnd/css/styleInicioSesion.css">
+</head>
+<body>
+    <main class="container">
+        <h2>Inicio de Sesión</h2>
+        <form id="LoginForm">
+            <div class="input-field">
+                <input type="text" name="username" id="username"
+                    placeholder="Nombre de usuario">
+                <div class="underline"></div>
+            </div>
+            <div class="input-field">
+                <input type="password" name="password" id="password"
+                    placeholder="Contraseña">
+                <div class="underline"></div>
+            </div>
+            <input type="submit" value="Iniciar Sesión">
+        </form>
+
+        <div class="divisor">
+            <hr>
+            <span>ó</span>
+            <hr>
+        </div>
+
+        <div class="google-btn">
+            <a href="http://localhost:3000/auth/google" class="btn-google btn-login-social">
+                <i class="fab fa-google"></i> Iniciar sesión con Google
+            </a>
+        </div>
+    </main>
+
+    <div id="toastContainer"></div>
+
+    <script slot="/frontEnd/js/scriptClassToast.js"></script>
+    <script src="/frontEnd/js/scriptClassToast.js"></script>
+    <script src="/frontEnd/js/scriptValidacion.js"></script>
+</body>
+</html>

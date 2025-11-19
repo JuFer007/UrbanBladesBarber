@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Icon -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Estilos -->
+    <link rel="stylesheet" href="/frontEnd/css/styleMain.css">
+    <link rel="stylesheet" href="/frontEnd/css/styleToast.css">
+    <link rel="stylesheet" href="/frontEnd/css/styleModalEmpleado.css">
+    <link rel="stylesheet" href="/frontEnd/css/styleModalConfirmacion.css">
+    <link rel="stylesheet" href="/frontEnd/css/styleModalCliente.css">
+    <link rel="stylesheet"
+        href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
+    <title>Sistema Barberia</title>
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="logo-section">
+            <div class="logo-icon">
+                <img src="/recursos/logoBarberia.png" alt="Logo The Grill House" style="width: 100%; height: 100%;">
+            </div>
+            <div class="brand-title">Urban Blades</div>
+            <div class="brand-sub">Barber System</div>
+        </div>
+
+        <nav class="side-menu">
+            <a href="#" class="nav-item active" data-seccion="divDashboard">
+                <i class="ri-bar-chart-2-line"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <div class="nav-group">
+                <a href="#" class="nav-item active" data-seccion="divEmpleados">
+                        <i class="ri-user-2-line"></i>
+                        <span>Empleados</span>
+                    </a>
+                    <a href="#" class="nav-item active" data-seccion="divClientes">
+                        <i class="ri-user-heart-line"></i>
+                        <span>Clientes</span>
+                    </a>
+                    <a href="#" class="nav-item active" data-seccion="divServicios">
+                        <i class="ri-scissors-fill"></i>
+                        <span>Servicios</span>
+                    </a>
+                    <a href="#" class="nav-item active" data-seccion="divReservas">
+                        <i class="ri-calendar-check-line"></i>
+                        <span>Reservas</span>
+                    </a>
+                    <a href="#" class="nav-item active" data-seccion="divPagos">
+                        <i class="ri-calendar-check-line"></i>
+                        <span>Pagos</span>
+                    </a>
+                    
+                </div>
+            </div>
+        </nav>
+
+        <button class="logout-btn" onclick="logout()">
+            <i class="ri-logout-box-r-line"> </i> <span>Cerrar Sesión</span>
+        </button>
+    </aside>
+
+    <!-- DASHBOARD -->
+    <section class="main-content" id="divDashboard">
+        <header class="header">
+            <div class="header-title">
+                <h1 id="pageTitle">Dashboard Principal</h1>
+                <p id="pageDesc">Gestión integral del barberia</p>
+            </div>
+            <div class="user-badge">
+                <div class="user-avatar">A</div>
+                <span id="profile-role" style="font-weight: 600; font-size: 14px;">Cargo</span>
+            </div>
+        </header>
+        <div class="content">
+            <!-- Dashboard Inicial -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
+                        </svg>
+                    </div>
+                    <div class="stat-value" id="cantidadEmpleados">
+                    </div>
+                    <div class="stat-label">Numero de Empleados Registrados</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
+                        </svg>
+                    </div>
+                    <div class="stat-value" id="numeroClientes"></div>
+                    <div class="stat-label">Cantidad Total de Clientes</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                        </svg>
+                    </div>
+                    <div class="stat-value" id="cantidadReservas"></div>
+                    <div class="stat-label">Cantidad de Reservas</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z" />
+                        </svg>
+                    </div>
+                    <div class="stat-value" id="ingresosTotales"></div>
+                    <div class="stat-label">Total de Ganancias</div>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Reservas por Mes</h3>
+                    </div>
+                    <canvas id="chartReservas" style="height: 250px;"></canvas>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Ingresos por Mes y Método</h3>
+                    </div>
+                    <canvas id="chartIngresos" style="height: 250px;"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCION EMPLEADOS -->
+    <section class="main-content" id="divEmpleados" style="display: none;">
+        <header class="header">
+            <div class="header-title">
+                <h1 id="pageTitle">Gestion Empleados</h1>
+                <p id="pageDesc">Gestión integral de Empleados</p>
+            </div>
+            <div class="user-badge">
+                <div class="user-avatar">A</div>
+                <span id="profile-role" style="font-weight: 600; font-size: 14px;">Cargo</span>
+            </div>
+        </header>
+        <div class="content">
+            <div class="stats-grid">
+                <div class="card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; gap: 15px;">
+                        <div class="search-box">
+                            <svg class="search-icon" viewBox="0 0 24 24">
+                                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 
+                                        16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 
+                                        5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 
+                                        4.99L20.49 19l-4.99-5zm-6 0C7.01 14 
+                                        5 11.99 5 9.5S7.01 5 9.5 5 
+                                        14 7.01 14 9.5 11.99 14 9.5 14z" />
+                            </svg>
+                            <input type="text" class="search-input" id="buscarEmpleado"
+                                placeholder="Buscar empleado...">
+                        </div>
+                        <div class="botones">
+                            <button class="btn btn-secondary" id="btnAbrirModal">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                                </svg>
+                                Agregar
+                            </button>
+                            <button class="btn btn-success" id="btnDeshabilitar">
+                                <i class="fas fa-times-circle"></i>
+                                Deshabilitar
+                            </button>
+                            <button class="btn btn-success" id="btnHabilitar">
+                                <i class="fas fa-check-circle"></i>
+                                Habilitar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Lista de Empleados</h3>
+                </div>
+                <div class="table-container">
+                    <table class="table" id="empleadosTable">
+                        <thead>
+                            <tr>
+                                <th>DNI</th>
+                                <th>Nombre</th>
+                                <th>Apellido Paterno</th>
+                                <th>Apellido Materno</th>
+                                <th>Telefono</th>
+                                <th>Salario</th>
+                                <th>Cargo</th>
+                                <th>Estado</th>
+                                <th>Genero</th>
+                            </tr>
+                        </thead>
+                        <tbody id="empleados-body">
+                            <!-- Contenido dinámico por JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Detalle de Empleados</h3>
+                </div>
+                <div class="stat-label">Seleccione para visualizar </div>
+                <div class="perfil-empleado" id="perfilEmpleado" style="display: none;">
+                    <div class="perfil-imagen">
+                        <img id="fotoEmpleado" src="/recursos/userHombre.png" alt="Foto Empleado">
+                        <button id="btnEditar"><i class="fa-solid fa-pencil"></i> Editar</button>
+                    </div>
+
+                    <div class="perfil-datos">
+                        <h3 id="nombreCompleto">Nombre Apellido</h3>
+                        <p><em id="cargoEmpleado">Cargo</em></p>
+
+                        <ul>
+                            <li>
+                                <b>DNI</b>
+                                <span id="dniEmpleado">----</span>
+                            </li>
+                            <li>
+                                <b>Teléfono</b>
+                                <span id="telefonoEmpleado">----</span>
+                            </li>
+                            <li>
+                                <b>Salario</b>
+                                <span id="salarioEmpleado">----</span>
+                            </li>
+                            <li>
+                                <b>Género</b>
+                                <span id="generoEmpleado">----</span>
+                            </li>
+                            <li>
+                                <b>Estado</b>
+                                <span id="estadoEmpleado" class="estado-activo">Activo</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="modalAgregarEmpleado">
+                <div class="modal-content">
+                    <form id="formEmpleado">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Agregar Nuevo Empleado</h5>
+                            <button type="button" class="btn-close" id="btnCerrarModal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="nombre">Nombre</label>
+                                    <input type="text" id="nombre" name="nombre" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="apellidoP">Apellido Paterno</label>
+                                    <input type="text" id="apellidoP" name="apellidoP" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="apellidoM">Apellido Materno</label>
+                                    <input type="text" id="apellidoM" name="apellidoM" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="telefono">Teléfono</label>
+                                    <input type="text" id="telefono" name="telefono" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="salario">Salario</label>
+                                    <input type="number" step="0.01" id="salario" name="salario" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="genero">Género</label>
+                                    <select id="genero" name="genero" required>
+                                        <option value="" selected disabled>Seleccione...</option>
+                                        <option value="Masculino">Masculino</option>
+                                        <option value="Femenino">Femenino</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="telefono">DNI</label>
+                                    <input type="text" id="dni" name="dni" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="cargo">Cargo</label>
+                                    <select id="cargo" name="cargo" required>
+                                        <option value="" selected disabled>Seleccione...</option>
+                                        <option value="Barbero">Barbero</option>
+                                        <option value="Recepcionista">Recepcionista</option>
+                                        <option value="Administrador">Administrador</option>
+                                    </select>
+                                </div>
+                                <div class="col-12" id="extraCampos"></div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" id="btnCancelar">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Agregar Empleado</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- Modal de confirmacion -->
+            <div id="modalConfirm" class="modal">
+                <div class="modal-content">
+                    <h3>Confirmar cambios</h3>
+                    <p>¿Desea guardar los cambios realizados al empleado?</p>
+                    <div class="modal-actions">
+                        <button id="btnConfirmar"><i class="fas fa-check"></i> Sí, guardar</button>
+                        <button id="btnCancelarModal"><i class="fas fa-times"></i> Cancelar</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECCION CLIENTES -->
+    <section class="main-content" id="divClientes" style="display: none;">
+        <header class="header">
+            <div class="header-title">
+                <h1 id="pageTitle">Gestion de Clientes</h1>
+                <p id="pageDesc">Gestión integral de Clientes</p>
+            </div>
+            <div class="user-badge">
+                <div class="user-avatar">A</div>
+                <span id="profile-role" style="font-weight: 600; font-size: 14px;">Cargo</span>
+            </div>
+        </header>
+        <div class="content">
+            <div class="stats-grid">
+                <div class="card">
+                    <div class="toolbar">
+                        <div class="search-box">
+                            <svg class="search-icon" viewBox="0 0 24 24">
+                                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 
+                                        16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 
+                                        5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 
+                                        4.99L20.49 19l-4.99-5zm-6 0C7.01 14 
+                                        5 11.99 5 9.5S7.01 5 9.5 5 
+                                        14 7.01 14 9.5 11.99 14 9.5 14z" />
+                            </svg>
+                            <input type="text" class="search-input" id="buscarCliente" placeholder="Buscar cliente...">
+                        </div>
+
+                        <div class="botones">
+                            <button class="btn btn-primary" id="btnAbrirModalCliente">
+                                <i class="fa-solid fa-circle-plus"></i>
+                                Agregar
+                            </button>
+                            <button class="btn btn-secondary" id="btnEditarCliente">
+                                <i class="fa-solid fa-pencil"></i>
+                                Editar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="stats-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Lista de Clientes</h3>
+                    </div>
+                    <div class="table-container">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Apellido Paterno</th>
+                                    <th>Apellido Materno</th>
+                                    <th>Telefono</th>
+                                    <th>Correo Electrónico</th>
+                                </tr>
+                            </thead>
+                            <tbody id="clientes-body">
+                                <!-- Contenido dinámico por JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Reservas del cliente</h3>
+                    </div>
+                    <div class="table-container">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Servicio</th>
+                                    <th>Fecha</th>
+                                    <th>Hora</th>
+                                    <th>Precio</th>
+                                </tr>
+                            </thead>
+                            <tbody id="reservas-body">
+                                <!-- Contenido dinámico por JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal Agregar Cliente -->
+            <div id="modalAgregarCliente" class="custom-modal">
+                <div class="custom-modal-content">
+                    <div class="custom-modal-header">
+                        <h5>Agregar Cliente</h5>
+                        <button class="custom-btn-close" data-close="modalAgregarCliente">&times;</button>
+                    </div>
+                    <div class="custom-modal-body">
+                        <form class="custom-form">
+
+                            <div class="custom-row">
+                                <div class="custom-col-md-6">
+                                    <label class="custom-label">Nombre</label>
+                                    <input type="text" class="custom-input" placeholder="Ingrese nombre">
+                                </div>
+                                <div class="custom-col-md-6">
+                                    <label class="custom-label">Apellidos</label>
+                                    <input type="text" class="custom-input" placeholder="Ingrese apellidos">
+                                </div>
+                            </div>
+
+                            <div class="custom-row">
+                                <div class="custom-col-md-6">
+                                    <label class="custom-label">Teléfono</label>
+                                    <input type="text" class="custom-input" placeholder="Ingrese teléfono">
+                                </div>
+                                <div class="custom-col-md-6">
+                                    <label class="custom-label">Email</label>
+                                    <input type="email" class="custom-input" placeholder="Ingrese email">
+                                </div>
+                            </div>
+
+                            <div class="custom-modal-footer">
+                                <button type="button" class="custom-btn-secondary"
+                                    data-close="modalAgregarCliente">Cancelar</button>
+                                <button type="submit" class="custom-btn-primary">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal Editar Cliente -->
+            <div id="modalEditarCliente" class="custom-modal">
+                <div class="custom-modal-content">
+                    <div class="custom-modal-header">
+                        <h5>Editar Cliente</h5>
+                        <button class="custom-btn-close" data-close="modalEditarCliente">&times;</button>
+                    </div>
+                    <div class="custom-modal-body">
+                        <form class="custom-form">
+
+                            <div class="custom-row">
+                                <div class="custom-col-md-6">
+                                    <label class="custom-label">Nombre</label>
+                                    <input type="text" class="custom-input" value="Nombre cliente" readonly>
+                                </div>
+                                <div class="custom-col-md-6">
+                                    <label class="custom-label">Apellidos</label>
+                                    <input type="text" class="custom-input" value="Apellidos cliente" readonly>
+                                </div>
+                            </div>
+
+                            <div class="custom-row">
+                                <div class="custom-col-md-6">
+                                    <label class="custom-label">Teléfono</label>
+                                    <input type="text" class="custom-input" placeholder="Actualizar teléfono">
+                                </div>
+                                <div class="custom-col-md-6">
+                                    <label class="custom-label">Email</label>
+                                    <input type="email" class="custom-input" placeholder="Actualizar email">
+                                </div>
+                            </div>
+
+                            <div class="custom-modal-footer">
+                                <button type="button" class="custom-btn-secondary"
+                                    data-close="modalEditarCliente">Cancelar</button>
+                                <button type="submit" class="custom-btn-primary">Actualizar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECCION SERVICIOS -->
+    <section id="divServicios" class="main-content">
+        <header class="header">
+            <div class="header-title">
+                <h1 id="pageTitle">Gestion de Clientes</h1>
+                <p id="pageDesc">Gestión integral de Clientes</p>
+            </div>
+            <div class="user-badge">
+                <div class="user-avatar">A</div>
+                <span id="profile-role" style="font-weight: 600; font-size: 14px;">Cargo</span>
+            </div>
+        </header>
+        <div class="content">
+            <div class="stats-grid">
+                <div class="card">
+                    <div class="toolbar">
+                        <div class="search-box">
+                            <svg class="search-icon" viewBox="0 0 24 24">
+                                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 
+                                        16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 
+                                        5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 
+                                        4.99L20.49 19l-4.99-5zm-6 0C7.01 14 
+                                        5 11.99 5 9.5S7.01 5 9.5 5 
+                                        14 7.01 14 9.5 11.99 14 9.5 14z" />
+                            </svg>
+                            <input type="text" class="search-input" id="buscarCliente" placeholder="Buscar cliente...">
+                        </div>
+
+                        <div class="botones">
+                            <button class="btn btn-primary" id="btnAbrirModalCliente">
+                                <i class="fa-solid fa-circle-plus"></i>
+                                Agregar
+                            </button>
+                            <button class="btn btn-secondary" id="btnEditarCliente">
+                                <i class="fa-solid fa-pencil"></i>
+                                Editar
+                            </button>
+                            <button id="btnDeshabilitar"><i class="fas fa-times-circle"></i> Deshabilitar</button>
+                            <button id="btnHabilitar"><i class="fas fa-check-circle"></i> Habilitar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-servicios">
+                <div class="card" id="card-servicios">
+                    <div class="card-header">
+                        <h3 class="card-title">Lista de Servicios</h3>
+                    </div>
+                    <div class="table-container">
+                        <div class="tabla-servicios">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th style="padding:8px; text-align:left;">N°</th>
+                                        <th style="padding:8px; text-align:left;">Servicio</th>
+                                        <th style="padding:8px; text-align:left;">Precio</th>
+                                        <th style="padding:8px; text-align:left;">Descripción</th>
+                                        <th style="padding:8px; text-align:left;">Estado</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="servicios-body">
+                                    <!-- Cargar la tabla desde los controladores -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" id="card-dservicios">
+                    <div class="card-header">
+                        <h3 class="card-title">Detalle del Servicio</h3>
+                    </div>
+                    <div class="informe-servicio"></div>
+                </div>
+            </div>
+            <!--MODAL PARA AGREGAR UN SERVICIO-->
+            <div class="modal" id="modalAgregarServicio">
+                <div class="modal-content">
+                    <form id="formServicio">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Agregar Nuevo Servicio</h5>
+                            <button type="button" class="btn-close">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="nombreServicio">Nombre del Servicio</label>
+                                    <input type="text" id="nombreServicio" name="nombreServicio" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="precio">Precio</label>
+                                    <input type="number" id="precio" name="precio" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="descripcion">Descripcion</label>
+                                    <input type="text" id="descripcion" name="descripcion" required>
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="imagen">Imagen del Servicio</label>
+                                    <input type="file" id="imagen" name="imagen" accept="image/*">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="estado">Estado</label>
+                                    <select id="estado" name="estado" required>
+                                        <option value="" selected disabled>Seleccione</option>
+                                        <option value="Activo">Activo</option>
+                                        <option value="Inactivo">Inactivo</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Agregar Servicio</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- MODAL PARA EDITAR UN SERVICIO -->
+            <div id="modalEditarServicio" class="custom-modal">
+                <div class="custom-modal-content">
+                    <div class="custom-modal-header">
+                        <h5>Editar Servicio</h5>
+                        <button class="custom-btn-close" data-close="modalEditarServicio">&times;</button>
+                    </div>
+                    <div class="custom-modal-body">
+                        <form class="custom-form">
+                            <input type="hidden" id="editIdServicio" name="idServicio">
+                            <div class="custom-row">
+                                <div class="custom-col-md-4">
+                                    <label class="custom-label">Nombre del Servicio</label>
+                                    <input type="text" id="editNombreServicio" name="nombreServicio" class="custom-input" required>
+                                </div>
+                                <div class="custom-col-md-4">
+                                    <label class="custom-label">Precio</label>
+                                    <input type="number" id="editPrecio" name="precio" class="custom-input" step="0.01" required>
+                                </div>
+                                <div class="custom-col-md-4">
+                                    <label for="estado" class="custom-label">Estado</label>
+                                    <select id="editEstado" name="estado" class="custom-input" required>
+                                        <option value="Activo">Activo</option>
+                                        <option value="Inactivo">Inactivo</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="custom-row">
+                                <div class="custom-col-md-6">
+                                    <label class="custom-label">Descripcion</label>
+                                    <input type="text" id="editDescripcion" name="descripcion" class="custom-input" required>
+                                </div>
+                                <div class="custom-col-md-6">
+                                    <label class="custom-label">Imagen</label>
+                                    <input type="file" id="editImagen" name="imagen" class="custom-input" accept="image/*">
+                                </div>
+                            </div>
+                            <div class="custom-modal-footer">
+                                <button type="button" class="custom-btn-secondary" data-close="modalEditarServicio">Cancelar</button>
+                                <button type="submit" class="custom-btn-primary">Actualizar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="main-content" id="divReservas" style="display: none;">
+        <header class="header">
+            <div class="header-title">
+                <h1 id="pageTitle">Dashboard Principal</h1>
+                <p id="pageDesc">Gestión integral del barberia</p>
+            </div>
+            <div class="user-badge">
+                <div class="user-avatar">A</div>
+                <span id="profile-role" style="font-weight: 600; font-size: 14px;">Cargo</span>
+            </div>
+        </header>
+    </section>
+
+    <!-- SECCION PAGOS (Placeholder) -->
+    <section id="divPagos" class="main-content" style="display: none;">
+        <header class="header">
+            <div class="header-title">
+                <h1 id="pageTitle">Dashboard Principal</h1>
+                <p id="pageDesc">Gestión integral del barberia</p>
+            </div>
+            <div class="user-badge">
+                <div class="user-avatar">A</div>
+                <span id="profile-role" style="font-weight: 600; font-size: 14px;">Cargo</span>
+            </div>
+        </header>
+    </section>
+
+    <!-- Contenedor de Toast -->
+    <div id="toastContainer"></div>
+
+    <!-- Link de chart -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- FullCalendar JS -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+
+    <!-- Scripts de graficos -->
+    <script src="/frontEnd/js/otrosScripts/scriptGraficoIngresos.js"></script>
+    <script src="/frontEnd/js/otrosScripts/scriptGraficoReservas.js"></script>
+
+    <!-- Script del toast -->
+    <script src="/frontEnd/js/scriptClassToast.js"></script>
+
+    <!-- Scripts reportes -->
+    <script src="/frontEnd/js/otrosScripts/scriptReportes.js"></script>
+
+    <!-- Scrips de empleados -->
+    <script src="/frontEnd/js/otrosScripts/scriptEmpleados.js"></script>
+    <script src="/frontEnd/js/otrosScripts/scriptListarPerfilE.js"></script>
+    <script src="/frontEnd/js/otrosScripts/scriptModalEmpleados.js"></script>
+
+    <!-- Scripts de clientes -->
+    <script src="/frontEnd/js/otrosScripts/scriptClientes.js"></script>
+
+    <!-- Reservas y calendario-->
+    <script src="/frontEnd/js/otrosScripts/scriptReservasYCalendario.js"></script>
+
+    <!-- Scripts de servicios -->
+    <script src="/frontEnd/js/otrosScripts/scriptServiciosDashboard.js"></script>
+
+    <!-- Scripts animaciones -->
+    <script src="/frontEnd/js/scriptOcultarHeader.js"></script>
+
+    <!-- Scripts de funcionalidades -->
+    <script src="/frontEnd/js/otrosScripts/scriptEstadoEmpleado.js"></script>
+    <script src="/frontEnd/js/scriptNavegacion2.js"></script>
+    <script src="/frontEnd/js/scriptBuscador.js"></script>
+    <script src="/frontEnd/js/scriptValidacion.js"></script>
+
+    <script>
+        // Función para desplegar los submenús
+        function toggleSubmenu(element) {
+            const submenu = element.nextElementSibling;
+            element.classList.toggle('open');
+            submenu.classList.toggle('open');
+        }
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,147 @@
+/* ===== MODAL DE ADVERTENCIA ===== */
+#modalAdvertencia .modal-content {
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+#modalAdvertencia .modal-body {
+    padding: 3rem 2rem;
+}
+
+/* Animación del icono de advertencia */
+#modalAdvertencia i {
+    animation: shakeIcon 0.5s ease-out;
+}
+
+@keyframes shakeIcon {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    20%, 60% {
+        transform: translateX(-10px);
+    }
+    40%, 80% {
+        transform: translateX(10px);
+    }
+}
+
+#modalAdvertencia h3 {
+    color: #1a1a1a;
+    font-size: 1.75rem;
+}
+
+#modalAdvertencia .btn-warning {
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    min-width: 150px;
+    animation: pulse 2s infinite;
+}
+
+#modalAdvertencia .btn-warning:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 0 10px rgba(255, 193, 7, 0);
+    }
+}
+
+/* Caja de horario en modal de advertencia */
+.bg-warning.bg-opacity-10 {
+    background-color: rgba(255, 193, 7, 0.1) !important;
+}
+
+/* Animación de entrada del modal de advertencia */
+#modalAdvertencia.show .modal-dialog {
+    animation: slideDown 0.4s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+/* ===== MODAL DE CONFIRMACIÓN ===== */
+#modalConfirmacionReserva .modal-content {
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+#modalConfirmacionReserva .modal-body {
+    padding: 3rem 2rem;
+}
+
+#iconoConfirmacion {
+    animation: scaleIn 0.5s ease-out;
+}
+
+@keyframes scaleIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+#modalConfirmacionReserva h3 {
+    color: #1a1a1a;
+    font-size: 1.75rem;
+}
+
+#modalConfirmacionReserva .btn-dark {
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+#modalConfirmacionReserva .btn-dark:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+#detallesReserva {
+    border: 1px solid #e0e0e0;
+}
+
+/* Animación de entrada del modal de confirmación */
+#modalConfirmacionReserva.show .modal-dialog {
+    animation: slideDown 0.4s ease-out;
+}
+
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 576px) {
+    #modalAdvertencia .modal-body,
+    #modalConfirmacionReserva .modal-body {
+        padding: 2rem 1.5rem;
+    }
+    
+    #modalAdvertencia i,
+    #iconoConfirmacion i {
+        font-size: 60px !important;
+    }
+    
+    #modalAdvertencia h3,
+    #modalConfirmacionReserva h3 {
+        font-size: 1.5rem;
+    }
+}

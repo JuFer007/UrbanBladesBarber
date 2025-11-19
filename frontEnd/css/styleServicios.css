@@ -1,0 +1,277 @@
+:root {
+    --main-color: #666666;
+    --color-dark: #3c3c3c;
+    --text-grey: #000000;
+}
+
+/* ===== CONTENEDOR PRINCIPAL ===== */
+#divServicios {
+    margin-top: 60px; 
+    background: #f1f4f9;
+    padding: 1.3rem;
+    margin-left: 150px;
+}
+
+#menu-toggle:checked ~ #divServicios {
+    margin-left: 60px;
+}
+
+.contenedor-servicios {
+    margin-left: 10px;
+    width: 100%;
+    max-width: 100%;
+}
+
+/* ===== SECCIÓN DE ACCIONES: BUSCADOR Y BOTONES ===== */
+/* Contenedor de acciones */
+.acciones-servicios {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 20px;
+    background: #fff;
+    padding: 1rem 1.5rem;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Buscador */
+.buscador {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    max-width: 400px;
+    background: #f8f9fa;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.buscador label {
+    background: #ddd;
+    color: #333;
+    padding: 0.55rem 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    cursor: pointer;
+}
+.buscador input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 0.55rem 0.8rem;
+    font-size: 0.95rem;
+    color: #333;
+    outline: none;
+    height: 35px;
+}
+
+
+.buscador input::placeholder {
+    color: #aaa;
+}
+
+/* Efecto al enfocar */
+.buscador:focus-within {
+    border-color: var(--main-color);
+    box-shadow: 0 0 5px rgba(0, 150, 136, 0.3);
+}
+
+/* Botones (los dejo igual que los tuyos) */
+.botones {
+    display: flex;
+    gap: 10px;
+}
+
+.botones button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+#btnAgregar {
+    background: #22baa0;
+    color: black;
+}
+
+#btnAgregar:hover {
+    background: #1da085;
+}
+
+#btnEditar {
+    background: #05a2c6;
+    color: black;
+    border: none;
+}
+
+#btnEditar:hover {
+    background: #59b8d7;
+}
+
+
+#btnDeshabilitar {
+    background: #f25656;
+    color: black;
+}
+
+#btnDeshabilitar:hover {
+    background: #e04444;
+}
+
+#btnHabilitar {
+    background-color: #f9f94f;
+    color: black;
+}
+
+#btnHabilitar:hover {
+    background-color: #f6f630;
+}
+.tabla-servicios {
+    width: 100%;
+    margin-bottom: 30px;
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: 0px 5px 5px -5px rgb(0 0 0 / 10%);
+    overflow-x: auto;
+}
+
+.tabla-servicios table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: auto;
+    font-family: 'Merriweather Sans', sans-serif;
+}
+
+/* Encabezados de la tabla */
+.tabla-servicios thead {
+    background: #e9edf2;
+}
+
+.tabla-servicios thead th {
+    padding: 0.8rem 0.75rem; 
+    text-align: left;
+    color: #444;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-bottom: 1px solid #dee2e8;
+    white-space: nowrap;
+}
+
+/* Celdas del cuerpo de la tabla */
+.tabla-servicios tbody td {
+    padding: 0.8rem 0.75rem;
+    color: #444;
+    border-bottom: 1px solid #dee2e8;
+    vertical-align: middle;
+    font-size: 0.9rem;
+}
+
+.tabla-servicios tbody td:first-child {
+    color: var(--main-color);
+    font-weight: 600;
+}
+
+/* Hover effect para las filas */
+.tabla-servicios tbody tr:hover {
+    background-color: #f8f9fa;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+/* Filas seleccionadas */
+.tabla-servicios tbody tr.selected, .tabla-servicios tbody tr.selected:hover {
+    background-color: #e5f8ed;
+}
+
+.tabla-servicios tbody tr.selected td {
+    color: var(--main-color);
+}
+
+.estado-activo {
+    background: #54ac41;
+    width: 80px;
+    color: rgb(0, 0, 0);
+    padding: 0.2rem 0.1rem;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: inline-block;
+    text-align: center;
+}
+
+/* ===== TARJETA DE INFORME DE SERVICIO ===== */
+.perfil-servicio-card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 1.2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.perfil-servicio-card .servicio-imagen {
+    width: 200px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 3px solid #fff;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+.perfil-servicio-card .servicio-info {
+    text-align: center;
+    width: 100%;
+}
+
+.servicio-info h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-dark);
+}
+
+.servicio-info p {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+.servicio-info .servicio-detalles {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #f8f9fa;
+    padding: 0.8rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+.servicio-detalles span strong {
+    color: var(--color-dark);
+}
+
+.estado-inactivo {
+    background: #f25656;
+    width: 80px;
+    color: rgb(0, 0, 0);
+    padding: 0.2rem 0.1rem;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: inline-block;
+    text-align: center;
+}

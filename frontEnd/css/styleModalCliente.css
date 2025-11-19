@@ -1,0 +1,146 @@
+/* =========================
+   Estilos exclusivos modales (Agregar / Editar Cliente)
+   ========================= */
+.custom-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6);
+}
+
+.custom-modal.show {
+    display: block;
+}
+
+.custom-modal-content {
+    background-color: #ffffff;
+    margin: 5% auto;
+    border-radius: 12px;
+    padding: 0;
+    width: 80%;
+    max-width: 750px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+    animation: fadeInScale 0.3s ease-out;
+}
+
+@keyframes fadeInScale {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.custom-modal-header {
+    background-color: #dbe84d;
+    color: #000000;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    font-size: 18px;
+}
+
+.custom-modal-header h5 {
+    margin: 0;
+    font-weight: bold;
+}
+
+.custom-btn-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #000000;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+}
+
+.custom-btn-close:hover {
+    color: #3c3b3b;
+}
+
+.custom-modal-body {
+    padding: 20px;
+}
+
+.custom-modal-footer {
+    padding: 15px 20px;
+    text-align: right;
+    border-top: 1px solid #ddd;
+    background: #f8f8f8;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.custom-modal-footer button {
+    margin-left: 10px;
+    font-size: 13px;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 8px 16px;
+    cursor: pointer;
+    border: none;
+}
+
+/* Botones personalizados */
+.custom-btn-primary {
+    background-color: #dbe84d;
+    color: #000000;
+    transition: background 0.2s ease-in-out;
+}
+
+.custom-btn-primary:hover {
+    background-color: #bdc941;
+}
+
+.custom-btn-secondary {
+    background-color: #ccc;
+    color: #000;
+}
+
+.custom-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.custom-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.custom-col-md-4 {
+    flex: 1 1 30%;
+    font-size: 13px;
+}
+
+.custom-col-md-6 {
+    flex: 1 1 48%;
+    font-size: 13px;
+}
+
+.custom-col-12 {
+    flex: 1 1 100%;
+    font-size: 13px;
+}
+
+.custom-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 13px;
+}
+
+.custom-input, .custom-select {
+    width: 100%;
+    padding: 7px 10px;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 13px;
+}

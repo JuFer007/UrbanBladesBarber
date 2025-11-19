@@ -1,0 +1,163 @@
+/* Estilos del Menú Usuario */
+.user-menu-dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.user-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.user-avatar:hover {
+    border-color: #ff6600;
+    transform: scale(1.05);
+}
+
+.navbar.scrolled .user-avatar {
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+.navbar.scrolled .user-avatar:hover {
+    border-color: #ff6600;
+}
+
+.user-dropdown-menu {
+    background: white;
+    position: absolute;
+    top: calc(100% + 0.8rem);
+    right: 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    min-width: 240px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.user-dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.user-info-section {
+    padding: 1rem;
+    border-bottom: 1px solid #e9ecef;
+    text-align: center;
+}
+
+.user-name {
+    font-weight: 600;
+    color: black;
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.user-email {
+    font-size: 0.85rem;
+    color: #000000;
+    margin: 0;
+}
+
+.logout-item {
+    padding: 0;
+}
+
+.logout-btn {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    color: #ff6600;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.logout-btn:hover {
+    background-color: #f9cba5;
+    text-decoration: underline;
+}
+
+.logout-btn i {
+    font-size: 1rem;
+}
+
+@media(max-width:768px) {
+    .pc {
+        display: none;
+    }
+
+    .android {
+        display: block;
+    }
+
+    .carousel-control-prev {
+        left: -45px;
+    }
+
+    .carousel-control-next {
+        right: -45px;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        top: -40%;
+    }
+
+    header#inicio h1 {
+        font-family: 'Satisfy', cursive;
+        font-size: 8rem;
+    }
+
+    .modo_pc {
+        display: none;
+    }
+
+    .nav-link {
+        color: black;
+    }
+
+    ion-icon {
+        font-size: 1.6rem;
+        color: rgb(0, 0, 0);
+    }
+
+    .user-avatar {
+        border-color: rgba(0, 0, 0, 0.2);
+    }
+
+    .user-menu-dropdown {
+        border-top: 1px solid #e9ecef;
+        margin-top: 1rem;
+        padding-top: 1rem;
+    }
+
+    .user-info-section-mobile {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+    }
+
+    .user-info-section-mobile .user-avatar {
+        width: 40px;
+        height: 40px;
+    }
+}

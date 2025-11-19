@@ -1,0 +1,140 @@
+.container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* Botones */
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn-primary {
+    background-color: #1da085;
+    color: #000000;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.btn-secondary {
+    background-color: #ccc;
+    color: #000;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal.show {
+    display: block;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    border-radius: 10px;
+    padding: 0;
+    width: 80%;
+    max-width: 800px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-header {
+    background-color: #1da085;
+    color: #fff;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    font-size: 18px;
+}
+
+.modal-header h5 {
+    margin: 0;
+    font-weight: bold;
+}
+
+.btn-close {
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    color: #000000;
+    cursor: pointer;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-footer {
+    padding: 15px 20px;
+    text-align: right;
+    border-top: 1px solid #ddd;
+}
+
+.modal-footer button {
+    margin-left: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.col-md-4 {
+    flex: 1 1 30%;
+    font-size: 13px;
+}
+
+.col-md-6 {
+    font-size: 13px;
+    flex: 1 1 48%;
+}
+
+.col-12 {
+    font-size: 13px;
+    flex: 1 1 100%;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input, select {
+    width: 100%;
+    padding: 7px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
