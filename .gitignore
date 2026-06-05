@@ -1,0 +1,36 @@
+# Node.js
+node_modules/
+api/node_modules/
+
+# Dependencias PHP (Composer)
+vendor/
+
+# Archivos de entorno
+.env
+.env.local
+.env.*.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Sistema operativo
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
+
+# Capturas de pantalla (no necesarias en el repo)
+capturas/
+
+# Credenciales y configuración sensible
+api/server/credenciales.json
+
+# Package lock (opcional si se quiere ignorar)
+# package-lock.json

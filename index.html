@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urban Blades Barber</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="/frontEnd/css/styleIndex.css">
+    <link rel="stylesheet" href="/frontEnd/css/styleModal.css">
+    <link rel="stylesheet" href="/frontEnd/css/stylePerfilUsuario.css">
+</head>
+
+<body>
+    <!-- Contenedor de Toast -->
+    <div id="toastContainer"></div>
+
+    <nav class="navbar navbar-expand-md fixed-top transparent">
+        <div class="container d-flex justify-content-between align-items-center">
+            <!-- Logo -->
+            <a class="navbar-brand" href="/">
+                <img src="/recursos/logoBarberia.png" style="max-height: 65px; width: auto;" alt="Logo">
+            </a>
+
+            <!-- Botón responsive -->
+            <button class="navbar-toggler border-0 me-2" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#top-navbar" aria-controls="top-navbar">
+                <ion-icon name="reorder-four-outline"></ion-icon>
+            </button>
+
+            <!-- Links -->
+            <div class="collapse navbar-collapse modo_pc" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#barberos">Barberos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#servicios">Sevicios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contacto">Contactanos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#comentarios">Comentarios</a></li>
+                    <li class="nav-item" id="login-link-pc"><a class="nav-link" href="/frontEnd/html/login.html">Login</a></li>
+
+                    <!-- Menú Usuario (cuando está logeado) -->
+                    <li class="nav-item" style="display: none;" id="userMenuPC">
+                        <div class="user-menu-dropdown">
+                            <img src="" 
+                                 alt="Foto de perfil" class="user-avatar" id="userAvatarPC">
+                            
+                            <div class="user-dropdown-menu" id="userDropdownPC">
+                                <div class="user-info-section">
+                                    <p class="user-name" id="userNamePC">Nombre</p>
+                                </div>
+                                <div class="user-info-section" style="background-color: #f8f9fa;">
+                                    <p class="user-email" id="userNameEmail">Correo</p>
+                                </div>
+                                <div class="logout-item">
+                                    <button class="logout-btn" id="logoutBtnPC">
+                                        <i class="fas fa-sign-out-alt"></i> 
+                                        Cerrar sesión
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="top-navbar" aria-labelledby="top-navbarLabel">
+        <!--NAVEGACION-->
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#top-navbar"
+            aria-controls="top-navbar">
+            <div class="d-flex justify-content-between align-items-center  p-3">
+                <img src="/recursos/logoBarberia.png" style="max-height: 65px; width: auto;" alt="">
+                <ion-icon name="close-circle-outline"></ion-icon>
+            </div>
+        </button>
+        <ul class="navbar-nav ms-lg-auto p-4 p-lg-0">
+            <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#barberos">Barberos</a></li>
+            <li class="nav-item"><a class="nav-link" href="#servicios">Sevicios</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contacto">Contactanos</a></li>
+            <li class="nav-item"><a class="nav-link" href="#comentarios2">Comentarios</a></li>
+            <li class="nav-item" id="login-link-mobile"><a class="nav-link" href="/frontEnd/html/login.html">Login</a></li>
+
+            <!-- Menú Usuario Mobile -->
+            <li class="nav-item" id="userMenuMobile" style="display: none;">
+                <div class="user-info-section-mobile">
+                    <img src="" 
+                         alt="Foto de perfil" class="user-avatar" id="userAvatarMobile">
+                    <div>
+                        <p class="user-name mb-0" id="userNameMobile">Nombre</p>
+                        <p class="user-email mb-0" id="userEmailMobile">Email</p>
+                    </div>
+                </div>
+                <button class="logout-btn w-100" id="logoutBtnMobile">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Cerrar sesión
+                </button>
+            </li>
+        </ul>
+    </div>
+
+    <!--Seccion Inicio-->
+    <header id="inicio"
+        class="text-black text-center vh-100 d-flex flex-column justify-content-center align-items-center">
+        <h1 class="display-1 text-white">Urban Blades</h1>
+        <p class="lead text-white">Descubre cortes y afeitados de calidad, creados por manos expertas.</p>
+        <a href="#barberos" class="btn btn-outline-light btn-lg mt-3">Ver más</s></a>
+    </header>
+
+    <section class="barberos py-5" id="barberos">
+        <div class="container">
+            <h2 class="text-center py-5" id="barberos">Conoce a nuestros mejores Barberos</h2>
+            <div class="row g-4">
+                <!-- Barbero 1 -->
+                <div class="col-md-4">
+                    <div class="card shadow-sm border-0 cursor-pointer">
+                        <img src="/recursos/Barbero1.jpg" class="card-img-top rounded-top cursor-pointer" alt="Barbero 1"
+                            style="height: 440px;">
+                        <div class="card-body text-center">
+                            <h5 class="card-title fw-bold">Gus Barber</h5>
+                            <p class="card-text">Especialista en cortes clásicos y fades, con más de 5 años de
+                                experiencia.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow-sm border-0">
+                        <img src="/recursos/Barbero2.jpg" class="card-img-top rounded-top" alt="Barbero 1"
+                            style="height: 437px;">
+                        <div class="card-body text-center">
+                            <h5 class="card-title fw-bold">Luis Barber</h5>
+                            <p class="card-text">Especialista en cortes clásicos y modernos, con más de 10 años de
+                                experiencia.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card  shadow-sm border-0">
+                        <img src="/recursos/barbero3.jpg" class="card-img-top rounded-top" alt="Barbero 1"
+                            style="height: 440px;">
+                        <div class="card-body text-center">
+                            <h5 class="card-title fw-bold">Pedro Barber</h5>
+                            <p class="card-text">Especialista en cortes modernos, con más de 10 años de
+                                experiencia.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <section class="servicios py-1" id="servicios">
+        <div class="container">
+            <h2 class="text-center py-5">Nuestros Servicios</h2>
+            <!-- Contenedor para las tarjetas de servicios dinámicas -->
+            <div id="servicios-container" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4"></div>
+        </div>
+
+        <!-- Modal de Reservas -->
+        <div class="modal fade" id="reservasModal" tabindex="-1" aria-labelledby="reservasModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content shadow-lg rounded-4 border-0">
+
+                    <!-- Encabezado -->
+                    <div class="modal-header bg-dark text-white">
+                        <h5 class="modal-title" id="reservasModalLabel">Reserva tu cita</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Cerrar"></button>
+                    </div>
+
+                    <!-- Cuerpo con formulario -->
+                    <div class="modal-body">
+                        <form id="formReserva">
+                            <div class="mb-3">
+                                <input type="text" id="nombreCliente" class="form-control" placeholder="Nombre" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" id="apellidos" class="form-control" placeholder="Apellidos" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="tel" id="telefono" class="form-control" placeholder="Teléfono" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="tel" id="correoE" class="form-control" placeholder="Correo Electrónico">
+                            </div>
+                            <div class="mb-3">
+                                <input type="date" id="fecha" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="time" id="hora" class="form-control" placeholder="Hora de reserva" required>
+                            </div>
+                            <div class="mb-3">
+                                <select id="selectServicioModal" class="form-control" required>
+                                    <option value="">Selecciona un servicio</option>
+                                </select>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-dark">Enviar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contacto py-5" id="contacto">
+        <div class="container">
+            <h2 class="text-center mb-5">Ubícanos</h2>
+            <p class="text-center">Av. Balta 456, Chiclayo - Lambayeque</p>
+            <p class="text-center">Télefono: <a href="telefono">987 654 321</a></p>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.908960878892!2d-79.84219312501694!3d-6.77143086611454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x904ce7a4f2e90bff%3A0x45f4b6b1e537e8a4!2sAv.%20Balta%20456%2C%20Chiclayo%2014001!5e0!3m2!1ses-419!2spe!4v1690123456789!5m2!1ses-419!2spe"
+                width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy">
+            </iframe>
+        </div>
+    </section>
+
+    <!-- Sección de comentarios PC CARRUSEL-->
+    <div class="container-md p-5 my-5 shadow border rounded coments-custom pc" id="comentarios">
+        <h2 class="text-center fw-bold mb-5 text-black border-bottom border-2 border-black p-2">
+            Lo que dicen nuestros clientes
+        </h2>
+
+        <div id="carouselComentarios" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+
+                <!-- Slide 1 -->
+                <div class="carousel-item active">
+                    <div class="row g-4">
+                        <div class="col-12 col-lg-6">
+                            <div class="card h-100 p-4 card-rounded border-0 shadow-sm">
+                                <div class="d-flex align-items-center mb-3">
+                                    <img src="https://placehold.co/60x60/8e44ad/ffffff?text=MT"
+                                        class="rounded-circle me-3" alt="Cliente 1">
+                                    <div>
+                                        <h6 class="mb-0 fw-bold">Mauricio Tequén</h6>
+                                        <small class="text-secondary">Deportista</small>
+                                    </div>
+                                </div>
+                                <p class="text-secondary fst-italic">
+                                    "Me hicieron un fade brutal y la barba quedó perfecta. Salí como nuevo."
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <div class="card h-100 p-4 card-rounded border-0 shadow-sm">
+                                <div class="d-flex align-items-center mb-3">
+                                    <img src="https://placehold.co/60x60/3498db/ffffff?text=RV"
+                                        class="rounded-circle me-3" alt="Cliente 2">
+                                    <div>
+                                        <h6 class="mb-0 fw-bold">Maria Vasquez</h6>
+                                        <small class="text-secondary">Ingeniera ISIM</small>
+                                    </div>
+                                </div>
+                                <p class="text-secondary fst-italic">
+                                    "Mi hermano se cortó el cabello en este local y le quedó perfecto. Recomendado al
+                                    100%."
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="carousel-item">
+                    <div class="row g-4">
+                        <div class="col-12 col-lg-6">
+                            <div class="card h-100 p-4 card-rounded border-0 shadow-sm">
+                                <div class="d-flex align-items-center mb-3">
+                                    <img src="https://placehold.co/60x60/e67e22/ffffff?text=JC"
+                                        class="rounded-circle me-3" alt="Cliente 3">
+                                    <div>
+                                        <h6 class="mb-0 fw-bold">José Castillo</h6>
+                                        <small class="text-secondary">Estudiante</small>
+                                    </div>
+                                </div>
+                                <p class="text-secondary fst-italic">
+                                    "El ambiente es top, buena música y cortes de nivel. Cada visita es una
+                                    experiencia."
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <div class="card h-100 p-4 card-rounded border-0 shadow-sm">
+                                <div class="d-flex align-items-center mb-3">
+                                    <img src="https://placehold.co/60x60/2ecc71/ffffff?text=AF"
+                                        class="rounded-circle me-3" alt="Cliente 4">
+                                    <div>
+                                        <h6 class="mb-0 fw-bold">Andre Flores</h6>
+                                        <small class="text-secondary">Cliente frecuente</small>
+                                    </div>
+                                </div>
+                                <p class="text-secondary fst-italic">
+                                    "Nunca había probado una barbería con tanta dedicación en los detalles. Top.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Controles del carrusel -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselComentarios"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon bg-dark rounded-circle p-3" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselComentarios"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon bg-dark rounded-circle p-3" aria-hidden="true"></span>
+                <span class="visually-hidden">Siguiente</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Sección de comentarios ANDROID CARRUSEL-->
+    <div class="container-md p-5 my-5 shadow border rounded coments-custom android" id="comentarios2">
+        <h2 class="text-center fw-bold mb-5 text-black border-bottom border-2 border-black p-2">
+            Lo que dicen nuestros clientes
+        </h2>
+
+        <div id="carouselComentarios1" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+
+                <!-- Slide 1 -->
+                <div class="carousel-item active">
+                    <div class="row g-4">
+                        <div class="col-12 col-lg-6">
+                            <div class="card h-100 p-4 card-rounded border-0 shadow-sm">
+                                <div class="d-flex align-items-center mb-3">
+                                    <img src="https://placehold.co/60x60/8e44ad/ffffff?text=MT"
+                                        class="rounded-circle me-3" alt="Cliente 1">
+                                    <div>
+                                        <h6 class="mb-0 fw-bold">Mauricio Tequén</h6>
+                                        <small class="text-secondary">Deportista</small>
+                                    </div>
+                                </div>
+                                <p class="text-secondary fst-italic">
+                                    "Me hicieron un fade brutal y la barba quedó perfecta. Salí como nuevo."
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="carousel-item">
+                    <div class="row g-4">
+                        <div class="col-12 col-lg-6">
+                            <div class="card h-100 p-4 card-rounded border-0 shadow-sm">
+                                <div class="d-flex align-items-center mb-3">
+                                    <img src="https://placehold.co/60x60/e67e22/ffffff?text=JC"
+                                        class="rounded-circle me-3" alt="Cliente 3">
+                                    <div>
+                                        <h6 class="mb-0 fw-bold">José Castillo</h6>
+                                        <small class="text-secondary">Estudiante</small>
+                                    </div>
+                                </div>
+                                <p class="text-secondary fst-italic">
+                                    "El ambiente es top, buena música y cortes de nivel. Cada visita es una
+                                    experiencia."
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="carousel-item">
+                    <div class="row g-4">
+                        <div class="col-12 col-lg-6">
+                            <div class="card h-100 p-4 card-rounded border-0 shadow-sm">
+                                <div class="d-flex align-items-center mb-3">
+                                    <img src="https://placehold.co/60x60/3498db/ffffff?text=RV"
+                                        class="rounded-circle me-3" alt="Cliente 2">
+                                    <div>
+                                        <h6 class="mb-0 fw-bold">Maria Vasquez</h6>
+                                        <small class="text-secondary">Ingeniera ISIM</small>
+                                    </div>
+                                </div>
+                                <p class="text-secondary fst-italic">
+                                    "Mi hermano se cortó el cabello en este local y le quedó perfecto. Recomendado al
+                                    100%."
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="carousel-item">
+                    <div class="row g-4">
+                        <div class="col-12 col-lg-6">
+                            <div class="card h-100 p-4 card-rounded border-0 shadow-sm">
+                                <div class="d-flex align-items-center mb-3">
+                                    <img src="https://placehold.co/60x60/2ecc71/ffffff?text=AF"
+                                        class="rounded-circle me-3" alt="Cliente 4">
+                                    <div>
+                                        <h6 class="mb-0 fw-bold">Andre Flores</h6>
+                                        <small class="text-secondary">Cliente frecuente</small>
+                                    </div>
+                                </div>
+                                <p class="text-secondary fst-italic">
+                                    "Nunca había probado una barbería con tanta dedicación en los detalles. Top.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controles del carrusel -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselComentarios1"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon bg-dark rounded-circle p-3" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselComentarios1"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon bg-dark rounded-circle p-3" aria-hidden="true"></span>
+                <span class="visually-hidden">Siguiente</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="container-fluid bg-white shadow-top">
+        <footer class=" py-3 mt-4 border-top">
+            <div class="container-fluid row  ">
+                <div class="col-md-4 align-content-start me-auto ">
+                    <span class="mb-0 text-body-secondary">Urban Blades</span>
+                </div>
+                <ul class="nav col-md-4 justify-content-end list-unstyled align-content-end">
+                    <li class="ms-2 me-2">
+                        <p class="mb-0">Redes: </p>
+                    </li>
+                    <li class="ms-2 me-2">
+                        <a class="text-body-secondary" href="#" aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-instagram" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334" />
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="ms-2 me-2">
+                        <a class="text-body-secondary" href="#" aria-label="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-facebook" viewBox="0 0 16 16">
+                                <path
+                                    d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951" />
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="ms-2 me-2">
+                        <a class="text-body-secondary" href="#" aria-label="whatssapp">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-whatsapp" viewBox="0 0 16 16">
+                                <path
+                                    d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232" />
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="text-center mt-4 pt-4 border-top border-secondary border-2">
+                <p class="mb-0">© 2025. Todos los derechos reservados.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modal de Advertencia (Horario Incorrecto) -->
+    <div class="modal fade" id="modalAdvertencia" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-body text-center p-5">
+                    <!-- Icono de advertencia -->
+                    <div class="mb-4">
+                        <i class="fa-solid fa-triangle-exclamation text-warning" style="font-size: 80px;"></i>
+                    </div>
+                    
+                    <!-- Título -->
+                    <h3 class="fw-bold mb-3 text-dark">Horario No Disponible</h3>
+                    
+                    <!-- Mensaje -->
+                    <p class="text-muted mb-4">
+                        Nuestro horario de atención es de <strong>9:00 AM a 7:00 PM</strong>.
+                        <br>Por favor, selecciona una hora dentro de este rango.
+                    </p>
+                    
+                    <!-- Horario permitido destacado -->
+                    <div class="bg-warning bg-opacity-10 rounded p-3 mb-4 border border-warning">
+                        <i class="fa-solid fa-clock text-warning me-2"></i>
+                        <strong class="text-dark">Horario: 9:00 AM - 7:00 PM</strong>
+                    </div>
+                    
+                    <!-- Botón -->
+                    <button type="button" class="btn btn-warning px-5 py-2 text-dark fw-bold" data-bs-dismiss="modal">
+                        Entendido
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Confirmación de Reserva -->
+    <div class="modal fade" id="modalConfirmacionReserva" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-body text-center p-5">
+                    <div id="iconoConfirmacion" class="mb-4">
+                        <i class="fa-solid fa-circle-check text-success" style="font-size: 80px;"></i>
+                    </div>
+                    
+                    <!-- Título -->
+                    <h3 id="tituloConfirmacion" class="fw-bold mb-3">¡Reserva Confirmada!</h3>
+                    
+                    <!-- Mensaje -->
+                    <p id="mensajeConfirmacion" class="text-muted mb-4">
+                        Mensaje
+                    </p>
+                    
+                    <!-- Detalles de la reserva -->
+                    <div id="detallesReserva" class="bg-light rounded p-3 mb-4 text-start">
+                        <div class="row g-2">
+                            <div class="col-6">
+                                <small class="text-muted d-block">Fecha</small>
+                                <strong id="detalleFecha">-</strong>
+                            </div>
+                            <div class="col-6">
+                                <small class="text-muted d-block">Hora</small>
+                                <strong id="detalleHora">-</strong>
+                            </div>
+                            <div class="col-12 mt-2">
+                                <small class="text-muted d-block">Servicio</small>
+                                <strong id="detalleServicio">-</strong>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Botón -->
+                    <button type="button" class="btn btn-dark px-5 py-2" data-bs-dismiss="modal">
+                        Aceptar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Advertencia (No ha iniciado sesión) -->
+    <div class="modal fade" id="modalSesion" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-body text-center p-5">
+                    <!-- Icono -->
+                    <div class="mb-4">
+                        <i class="fa-solid fa-circle-info text-info" style="font-size: 80px;"></i>
+                    </div>
+
+                    <h3 class="fw-bold mb-3 text-dark">Inicie Sesión para Reservar</h3>
+                    <p class="text-muted mb-4">
+                        Debes iniciar sesión para poder realizar una reserva.
+                    </p>
+
+                    <button type="button" class="btn btn-info px-5 py-2 text-dark" data-bs-dismiss="modal" style="font-weight: bold !important;">
+                        Entendido
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+    <!-- Inicio de sesion --> 
+    <script src="/frontEnd/js/scriptInicioSesion.js"></script>
+    <!-- Agregar reserva -->
+    <script src="/frontEnd/js/otrosScripts/scriptAgregarReserva.js"></script>
+    <!-- Cargar servicios -->
+    <script src="/frontEnd/js/otrosScripts/scriptServicios.js"></script>
+    <script src="/frontEnd/js/script.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
