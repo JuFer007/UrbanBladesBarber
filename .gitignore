@@ -26,8 +26,6 @@ Desktop.ini
 *.log
 npm-debug.log*
 
-# Capturas de pantalla (no necesarias en el repo)
-capturas/
 
 # Credenciales y configuración sensible
 api/server/credenciales.json
